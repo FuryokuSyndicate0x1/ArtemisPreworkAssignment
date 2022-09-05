@@ -1,0 +1,19 @@
+My original plan for solving this task was to start with what were the most important functions for the contract.
+Given that they were listed inside of the requirements I started there and then built out the necessary components.
+Along the way trying to think about creating an escrow platform that was both minimizing trust and easy to use. 
+There is still trust required in the form of a third party to add senders and receivers as well as depositable tokens.
+This leads me down the path of choosing which additional components like mappings, dependencies, and other controls were necessary.
+
+Very quickly I ran into the problem of if it were to allow for any deposits from a select set of individuals how does it deal with the 
+additional complexity that this adds. If users are able to deposit any tokens and there could potentially be multiple parties, 
+what else needs to be added in order to make sure that it can fill the necessary requirements and still be useable? 
+Luckily I had recently looked into the contracts for Jones Dao and remembered the function they had written for migrating from one vault to another.
+I felt that this was a viable solution to my problem, and with a few minor changes, integrated it into the escrow contract. This made it so that 
+withdrawing loops through an array of tokens and sends the receiver their pro rata share of the contract balance. 
+This then allowed for multiple parties to deposit multiple tokens and for multiple receivers to withdraw those easily. 
+While still not perfect as there is still the issue if in a case like this someone wants just all of one token or another. I do feel like 
+it is currently a contract that would allow for parties to reach an agreement where multiple tokens would be useful, while still functioning well
+as a single token deposit system. 
+
+Ultimately it was an interesting challenge as I had never created an escrow contract before. And having built a baseline for this 
+it could be something fun to play with forming a more complex version where individuals would do NFTs as well.  
